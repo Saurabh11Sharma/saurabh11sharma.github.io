@@ -1,12 +1,12 @@
 # Site
-repository: sproogen/resume-theme
+repository: github.com/Saurabh11Sharma
 # favicon: images/favicon.ico
 
 # Personal info
-name: Brett Harris
-title: Senior Network System Administrator
-email: brett.h@email.co.uk
-website: www.github.com/sproogen/resume-theme
+name: Saurabh Sharma
+title: Senior Software Engineer
+email: saurabh11sharma@live.com
+website: www.github.com/Saurabh11Sharma
 
 # Social links
 twitter_username: facespics
@@ -15,7 +15,7 @@ github_username:  sproogen
 # facebook_username: jekyll
 # flickr_username: jekyll
 instagram_username: chillwildlife
-linkedin_username: jameswgrant
+linkedin_username: saurabh11sharma
 # pinterest_username: jekyll
 youtube_username: globalmtb
 # googleplus_username: +jekyll
@@ -24,7 +24,7 @@ youtube_username: globalmtb
 # about_title: About Me
 about_profile_image: images/profile.jpg
 about_content: | # this will include new lines to allow paragraphs
-  Hi, my name's Brett and I'm a senior network system administrator. As well as administrating systems I also have experience making software and web apps. I have worked at a number of companies gaining teamwork and leadership skills.
+  Hi, my name's Saurabh and I'm a senior Software Engineer. As well as administrating systems I also have experience making software and web apps. I have worked at a number of companies gaining teamwork and leadership skills.
 
   I am most skilled in: <mark>AWS</mark> and <mark>Eating Pizza</mark>
 
