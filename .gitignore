@@ -1,6 +1,4 @@
-*.gem
-.bundle
-.sass-cache
-_site
-*.code-workspace
-vendor
+node_modules
+dist
+.env
+.DS_Store
