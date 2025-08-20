@@ -15,12 +15,6 @@ This is an interactive, modern online CV & portfolio built with **React 18**, **
 
 ---
 
-## � Screenshot
-
-<!-- Replace the link below with your actual screenshot -->
-![Screenshot](public/screenshot.png)
-
----
 
 ## ✨ Features
 
