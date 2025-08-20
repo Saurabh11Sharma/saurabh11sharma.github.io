@@ -463,8 +463,8 @@ export default function OnlineCV() {
 
         <Section id="experience" title="Experience">
           <div className="space-y-6">
-            {DATA.experiences.map((exp) => (
-              <div key={exp.title} className="p-5 rounded-2xl border border-black/10 dark:border-white/10">
+            {DATA.experiences.map((exp, i) => (
+              <div key={exp.title + exp.company + i} className="p-5 rounded-2xl border border-black/10 dark:border-white/10">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                   <div>
                     <h3 className="font-semibold text-lg">{exp.title}</h3>
