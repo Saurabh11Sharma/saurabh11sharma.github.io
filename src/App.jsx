@@ -143,11 +143,11 @@ const DATA = {
 
 const RESUME_URL = "/Saurabh_Sharma.pdf"; // ⬅️ put your PDF in public/
 
-// Small UI helpers
+// --- UI helpers ---
 const Section = ({ id, title, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-6 md:px-8 py-16">
-    <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8 flex items-center gap-3">
-      <span className="inline-block h-6 w-1.5 rounded bg-gradient-to-b from-blue-500 to-cyan-500" />
+    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-10 flex items-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-fuchsia-500 to-cyan-400 drop-shadow-lg">
+      <span className="inline-block h-8 w-2 rounded bg-gradient-to-b from-blue-500 to-cyan-500" />
       {title}
     </h2>
     {children}
@@ -155,18 +155,18 @@ const Section = ({ id, title, children }) => (
 );
 
 const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm leading-6 backdrop-blur border-gray-300/50 dark:border-white/10">
+  <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold leading-6 backdrop-blur border-fuchsia-400/50 dark:border-cyan-400/30 bg-fuchsia-100/60 dark:bg-cyan-900/30 text-fuchsia-700 dark:text-cyan-200 shadow-sm">
     {children}
   </span>
 );
 
 const ProgressBar = ({ value }) => (
-  <div className="w-full h-2 rounded-full bg-gray-200 dark:bg-white/10 overflow-hidden">
+  <div className="w-full h-2 rounded-full bg-gradient-to-r from-gray-200 via-fuchsia-100 to-cyan-100 dark:from-slate-800 dark:via-fuchsia-900 dark:to-cyan-900 overflow-hidden">
     <motion.div
-      className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-500"
+      className="h-full rounded-full bg-gradient-to-r from-blue-600 via-fuchsia-500 to-cyan-400 shadow-lg"
       initial={{ width: 0 }}
       whileInView={{ width: `${value}%` }}
-      transition={{ duration: 1.1, ease: "easeOut" }}
+      transition={{ duration: 1.1, ease: 'easeOut' }}
       viewport={{ once: true }}
     />
   </div>
