@@ -8,7 +8,6 @@ import {
   Sun,
   Moon,
   MapPin,
-  Phone,
   ExternalLink,
   ArrowUpRight,
 } from "lucide-react";
@@ -64,7 +63,6 @@ const DATA = {
   role: "AI/ML Engineer · Cloud-Native Architect · Full-Stack Developer",
   location: "India",
   email: "Saurabh11sharma@live.com",
-  phone: "+91-8699826276",
   linkedin: "https://www.linkedin.com/in/saurabh11sharma/",
   github: "https://github.com/Saurabh11Sharma",
   summary:
@@ -282,7 +280,6 @@ export default function OnlineCV() {
             className="hidden md:flex justify-between items-center px-8 py-1 text-xs bg-gradient-to-r from-blue-50 via-fuchsia-50 to-cyan-50 dark:from-slate-950 dark:via-fuchsia-950 dark:to-cyan-900 border-b border-fuchsia-200/40 dark:border-cyan-400/20"
           >
             <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-1"><Phone size={14}/> {DATA.phone}</span>
               <span className="inline-flex items-center gap-1"><Mail size={14}/> {DATA.email}</span>
               <a href={DATA.linkedin} target="_blank" className="inline-flex items-center gap-1 hover:text-fuchsia-600 dark:hover:text-cyan-400 transition"><Linkedin size={14}/> LinkedIn</a>
               <a href={DATA.github} target="_blank" className="inline-flex items-center gap-1 hover:text-fuchsia-600 dark:hover:text-cyan-400 transition"><Github size={14}/> GitHub</a>
@@ -327,7 +324,7 @@ export default function OnlineCV() {
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-7 w-7" title="Node.js"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-7 w-7" title="TypeScript"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-7 w-7" title="React.js"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg" alt="AWS" className="h-7 w-7" title="AWS"/>
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" className="h-7 w-7" title="AWS"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-7 w-7" title="Docker"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-7 w-7" title="Python"/>
             <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-7 w-7" title="MongoDB"/>
@@ -539,10 +536,6 @@ export default function OnlineCV() {
                 <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Mail size={18} /></div>
                 <span>{DATA.email}</span>
               </a>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Phone size={18} /></div>
-                <span>{DATA.phone}</span>
-              </div>
               <a href={DATA.linkedin} target="_blank" className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Linkedin size={18} /></div>
                 <span>LinkedIn</span>
