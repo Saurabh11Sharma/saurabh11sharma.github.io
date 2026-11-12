@@ -5,6 +5,12 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# GitHub Pages permits only one active deployment at a time. Queue deploys
+# instead of racing CDN purge operations from rapid consecutive commits.
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
 permissions:
   contents: read
   pages: write
