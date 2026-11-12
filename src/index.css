@@ -181,6 +181,15 @@ button { cursor: pointer; }
 .book-card span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
 .book-card p { margin: 9px 0 0; color: var(--muted); font-size: 11px; line-height: 1.6; }
 .book-arrow { color: var(--blue); }
+.credentials-block { margin-top: 34px; }
+.credentials-block > .eyebrow { margin: 0 0 13px; }
+.credentials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.credential-card { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface); }
+.credential-card > span { color: var(--blue); font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+.credential-card h3 { margin: 10px 0 8px; font-size: 12px; line-height: 1.55; }
+.credential-card p { margin: 0; color: var(--muted); font-size: 10px; }
+.credential-card b { color: var(--blue); padding: 0 3px; }
+
 .learning-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; }
 .learning-links a { color: var(--blue); font-size: 11px; font-weight: 800; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--blue) 35%, transparent); text-underline-offset: 4px; }
 
@@ -234,6 +243,7 @@ button { cursor: pointer; }
   .learning-banner > div:nth-child(2) { min-width: calc(100% - 65px); }
   .learning-banner a { margin-left: 61px; }
   .books-grid { grid-template-columns: 1fr; }
+  .credentials-grid { grid-template-columns: 1fr; }
   .timeline-heading { flex-direction: column; gap: 7px; }
   .timeline-heading time { padding: 0; }
   .contact-inner { padding: 65px 20px; }
