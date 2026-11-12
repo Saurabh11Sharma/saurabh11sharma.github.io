@@ -314,7 +314,7 @@ function App() {
           <div className="hero-metrics">
             <div><strong>13<span>+</span></strong><small>Years in software engineering</small></div>
             <div><strong>3</strong><small>International client engagements highlighted</small></div>
-            <div><strong>50<span>%</span></strong><small>Reported AWS cost reduction contribution</small></div>
+            <div><strong>50<span>%</span></strong><small>AWS infrastructure cost reduction at prior engagements</small></div>
             <div><strong>Remote</strong><small>Distributed team collaboration</small></div>
           </div>
         </section>
@@ -384,6 +384,20 @@ function App() {
               <h3>UKRI Funding Service — Award Management</h3>
               <p>At FornaxTech, working with Kerv Digital (London), I led an India-based engineering team and delivered the Award Management module to production within the agreed timeline. The work used Next.js, React, TypeScript, PostgreSQL, AWS and Docker, with DDD and Hexagonal Architecture. Client source code is not published in this portfolio.</p>
             </div>
+          </div>
+          <div className="professional-case-grid">
+            <article className="client-case">
+              <p className="eyebrow">PROFESSIONAL ENGAGEMENT · PRIVATE SOURCE CODE</p>
+              <h3>Verizon NTT — Telecom Infrastructure & FCC Workflows</h3>
+              <p>At Radiant Digital, I worked on telecom infrastructure data and FCC-related workflows, developing backend capabilities with Node.js, NestJS and PostgreSQL alongside React-based applications. The work involved coordination with US counterparts and engineering-practice leadership as Node.js Chapter Lead.</p>
+              <div className="tag-list"><span>Node.js</span><span>NestJS</span><span>PostgreSQL</span><span>React</span></div>
+            </article>
+            <article className="client-case">
+              <p className="eyebrow">PROFESSIONAL ENGAGEMENT · PRIVATE SOURCE CODE</p>
+              <h3>SSENSE — Brand Integrations & SKU Management</h3>
+              <p>At Clarion Technologies, I developed marketplace API integrations for luxury brands, including Gucci, supporting SKU management and product-data exchange. The engagement also included sales reporting capabilities and AWS serverless application work.</p>
+              <div className="tag-list"><span>Node.js</span><span>TypeScript</span><span>AWS</span><span>API integration</span></div>
+            </article>
           </div>
         </section>
 
