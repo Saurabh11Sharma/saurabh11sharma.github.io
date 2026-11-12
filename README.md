@@ -10,8 +10,8 @@ A responsive professional portfolio for a Senior Software Engineer and Technical
 - A clear professional introduction and engineering focus.
 - Core capabilities across backend, frontend, cloud, data, architecture and technical leadership.
 - Links to public repositories with descriptions based on their current contents.
-- A professional delivery summary for UKRI Funding Service Award Management. Client source code is private and is not published here.
-- Career history aligned with the current résumé.
+- Professional delivery summaries for UKRI Funding Service, Verizon NTT and SSENSE. Client source code is private and is not published here.
+- Career history, education and certification aligned with the current résumé.
 - A learning section linking to the Developer Mastery Vault and selected technical books.
 - Downloadable résumé, contact links and responsive layouts.
 - Light / dark theme control and mobile navigation.
@@ -70,7 +70,7 @@ Most content is defined near the top of src/App.jsx:
 - expertise — capability cards.
 - projects — public repository cards.
 - experience — professional career timeline.
-- books — featured reading list.
+- books and education — reading list, education and certification.
 
 Keep claims verifiable and link project cards to the exact repository. Client work should be described as professional experience or a case study; do not publish proprietary source code or confidential data.
 
