@@ -51,7 +51,7 @@ The GitHub Actions workflow in .github/workflows/pages.yml builds the site on pu
 
     public/
       favicon.svg
-      Saurabh Sharma_Full_Stack_Node.pdf
+      Saurabh_Sharma.pdf
     src/
       App.jsx
       index.css
@@ -76,7 +76,7 @@ Keep claims verifiable and link project cards to the exact repository. Client wo
 
 ## Résumé asset
 
-The site currently serves public/Saurabh_Sharma.pdf at /Saurabh%20Sharma_Full_Stack_Node.pdf. Keep this file aligned with the latest approved résumé before sharing the portfolio with recruiters.
+The site serves `public/Saurabh_Sharma.pdf` at `/Saurabh_Sharma.pdf`. This file was replaced with the exact uploaded CV stored as `public/Saurabh Sharma_Full_Stack_Node.pdf`; the two files currently contain identical PDF data. Keep the canonical `Saurabh_Sharma.pdf` asset aligned with the latest approved résumé before sharing the portfolio with recruiters.
 
 ## License
 
