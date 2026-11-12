@@ -1,7 +1,7 @@
 {
   "name": "saurabh11sharma.github.io",
   "version": "1.0.0",
-  "description": "Saurabh Sharma's interactive online CV and portfolio built with React, Vite, and Tailwind CSS. Deployed to GitHub Pages.",
+  "description": "Professional engineering portfolio for Saurabh Sharma — Senior Software Engineer and Technical Lead.",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,17 @@
     "type": "git",
     "url": "git+https://github.com/Saurabh11Sharma/saurabh11sharma.github.io.git"
   },
-  "keywords": [],
+  "keywords": [
+    "portfolio",
+    "senior-software-engineer",
+    "nodejs",
+    "typescript",
+    "react",
+    "nextjs",
+    "aws",
+    "nestjs",
+    "software-architecture"
+  ],
   "author": "Saurabh Sharma <Saurabh11sharma@live.com>",
   "license": "MIT",
   "bugs": {
