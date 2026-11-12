@@ -29,7 +29,7 @@ const PROFILE = {
   email: "saurabh11sharma@live.com",
   github: "https://github.com/Saurabh11Sharma",
   linkedin: "https://www.linkedin.com/in/saurabh11sharma/",
-  resume: "/Saurabh_Sharma.pdf",
+  resume: "/Saurabh%20Sharma_Full_Stack_Node.pdf",
 };
 
 const expertise = [
