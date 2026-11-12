@@ -215,6 +215,27 @@ const books = [
   },
 ];
 
+const education = [
+  {
+    title: "Post Graduate Diploma in Information Technology Project Management",
+    institution: "NMIMS",
+    year: "2021",
+    type: "Postgraduate diploma",
+  },
+  {
+    title: "Bachelor of Technology in Computer Science",
+    institution: "Uttar Pradesh Technical University",
+    year: "2013",
+    type: "Bachelor's degree",
+  },
+  {
+    title: "Professional Certificate Course in Generative AI and Machine Learning",
+    institution: "Professional certificate",
+    year: "Completed",
+    type: "Certification",
+  },
+];
+
 function SectionHeading({ eyebrow, title, description }) {
   return (
     <div className="section-heading">
@@ -431,6 +452,18 @@ function App() {
                 <ArrowUpRight size={16} className="book-arrow" />
               </a>
             ))}
+          </div>
+          <div className="credentials-block">
+            <p className="eyebrow">EDUCATION & CERTIFICATION</p>
+            <div className="credentials-grid">
+              {education.map(item => (
+                <article className="credential-card" key={item.title}>
+                  <span>{item.type}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.institution} <b>·</b> {item.year}</p>
+                </article>
+              ))}
+            </div>
           </div>
           <div className="learning-links">
             <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault/blob/master/ROADMAP.md" target="_blank" rel="noreferrer">Senior engineering roadmap</a>
