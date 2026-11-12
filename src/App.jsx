@@ -26,167 +26,166 @@ import {
 // === Editable profile data ===
 const DATA = {
   competencies: [
-    "Cloud-Native Architecture",
+    "Backend Engineering",
     "Full-Stack Development",
     "Technical Leadership",
-    "DevOps & CI/CD Automation",
-    "AI/ML Integration",
-    "Microservices Architecture",
-    "Regulatory Compliance",
-    "Agile Software Development",
+    "Cloud & Serverless Architecture",
+    "Microservices",
     "Domain-Driven Design (DDD)",
-    "System Performance Optimization",
-    "Client & Stakeholder Management",
-    "Cost Optimization & Cloud Efficiency",
+    "Hexagonal Architecture",
+    "API Design & Integration",
+    "Database Design & Performance",
+    "CI/CD & Engineering Quality",
+    "System Design",
+    "Developer Mentoring",
   ],
   certifications: [
     {
-      name: "Professional Certificate in Generative AI & Machine Learning",
-      org: "IIT Kanpur",
-      year: "2024",
+      name: "Professional Certificate Course in Generative AI and Machine Learning",
+      org: "Certification",
+      year: "Completed",
       type: "cert"
     },
     {
-      name: "Post Graduate Diploma in IT Project Management",
+      name: "Post Graduate Diploma in Information Technology Project Management",
       org: "NMIMS",
       year: "2021",
       type: "edu"
     },
     {
-      name: "B.Tech in Computer Science",
+      name: "Bachelor of Technology in Computer Science",
       org: "Uttar Pradesh Technical University",
       year: "2013",
       type: "edu"
     }
   ],
   name: "Saurabh Sharma",
-  role: "AI/ML Engineer · Cloud-Native Architect · Full-Stack Developer",
-  location: "India",
-  email: "Saurabh11sharma@live.com",
+  role: "Senior Software Engineer · Technical Lead · Node.js & TypeScript",
+  location: "Uttar Pradesh, India · Open to Remote",
+  email: "saurabh11sharma@live.com",
   linkedin: "https://www.linkedin.com/in/saurabh11sharma/",
   github: "https://github.com/Saurabh11Sharma",
   summary:
-    "Strategic technology leader with 12+ years of global experience in digital transformation, full-stack development, and cloud-native architecture. Specialized in architecting scalable, serverless systems using Node.js, TypeScript, React.js, and AWS, with a relentless focus on system resilience, cost optimization, and performance. Adept at Domain-Driven Design, microservices, and AI/ML integration to solve complex business challenges and elevate user experience. Proven track record of leading cross-functional teams, standardizing backend best practices, and accelerating delivery through Agile methodologies and CI/CD pipelines. Strong advocate for mentorship, technical excellence, and innovation. Trusted advisor to senior leadership, aligning technology initiatives with business goals, ensuring regulatory compliance (FCC), and driving scalable growth.",
-  
+    "Senior Software Engineer and Technical Lead with 13 years of experience delivering Node.js and TypeScript applications, AWS solutions and full-stack systems for international client projects. Experienced in backend architecture, REST APIs, PostgreSQL, MongoDB, CI/CD, cloud optimisation and engineering leadership. Combines hands-on development with technical design, mentoring and cross-functional delivery.",
   highlights: [
-    "IIT Kanpur – Professional Certificate in Generative AI & Machine Learning",
-    "12+ years in cloud-native architectures, serverless, microservices, and scalable backend systems",
-    "100% client satisfaction and consistent delivery across global projects.",
-    "Automated AWS server operations for zero downtime and near-perfect reliability.",
-    "Reduced AWS costs by 50% while scaling performance and resilience.",
-    "Instituted org-wide backend best practices and CI/CD pipelines, boosting developer efficiency and release reliability.",
-    "Led FCC-compliance-critical telecom projects with zero audit findings.",
-    "Mentored and upskilled 15+ developers, driving adoption of AI-driven pipelines and modern frameworks.",
-    "Pioneered internal AI tool adoption, building PoCs, demos, and automation solutions for business impact.",
-    "Strategic partner to senior leadership, aligning technology with business goals and regulatory standards.",
-    "Expert in translating complex business requirements into robust, scalable technical solutions.",
-    "Strong advocate for technical excellence, innovation, and continuous learning.",
+    "13 years of software engineering experience across backend, full-stack and cloud development.",
+    "Led an India-based engineering team and delivered the UKRI Funding Service Award Management module to production within the agreed timeline.",
+    "Worked with international client teams across UKRI, Verizon NTT and SSENSE engagements.",
+    "Contributed to AWS resource and service optimisation initiatives that reduced infrastructure costs by up to 50%.",
+    "Served as Node.js Chapter Lead, supporting shared backend standards and reusable engineering practices.",
+    "Built marketplace brand API integrations and SKU / product-data workflows, including integrations involving Gucci.",
+    "Focused on maintainable architecture, practical testing, code reviews and developer mentoring."
   ],
-
   skills: [
-    { name: "Node.js & TypeScript Development", level: 96 },
-    { name: "React.js & Modern Frontend", level: 94 },
-    { name: "AWS Serverless & Cloud Architecture", level: 93 },
-    { name: "Microservices & Domain-Driven Design (DDD)", level: 92 },
-    { name: "AI/ML Integration (PyTorch, TensorFlow, Scikit-learn)", level: 91 },
-    { name: "Python & R for Data Science", level: 90 },
-    { name: "DevOps (Docker, Kubernetes, CI/CD, Terraform)", level: 89 },
-    { name: "Cloud Infrastructure, Cost & Performance Optimization", level: 90 },
-    { name: "SQL & NoSQL (Postgres, MongoDB, DynamoDB)", level: 89 },
-    { name: "RESTful API & Backend Engineering", level: 91 },
-    { name: "Performance Tuning & Monitoring", level: 88 },
-    { name: "Agile Leadership, Mentorship & Team Building", level: 93 },
-    { name: "Regulatory Compliance (FCC, Data Security)", level: 87 },
-    { name: "Technical Strategy & Stakeholder Management", level: 90 },
+    { name: "Node.js, JavaScript & TypeScript", level: 95 },
+    { name: "NestJS, REST APIs & GraphQL", level: 90 },
+    { name: "React.js & Next.js", level: 88 },
+    { name: "AWS & Serverless Architecture", level: 88 },
+    { name: "PostgreSQL, MongoDB & SQL", level: 86 },
+    { name: "Microservices & System Design", level: 86 },
+    { name: "DDD & Hexagonal Architecture", level: 84 },
+    { name: "Docker, CI/CD & Observability", level: 82 },
+    { name: "Technical Leadership & Mentoring", level: 90 }
   ],
-
   experiences: [
     {
+      title: "Senior Technical Lead",
+      company: "FornaxTech (Remote) · Client: Kerv Digital, London, UK",
+      date: "Dec 2025 – Aug 2026",
+      bullets: [
+        "Led an India-based engineering team delivering modules for the UKRI Funding Service.",
+        "Delivered the Award Management module to production within the agreed timeline.",
+        "Worked across Next.js, React.js, TypeScript, PostgreSQL, AWS and Docker.",
+        "Applied Domain-Driven Design and Hexagonal Architecture to separate business logic from infrastructure concerns.",
+        "Coordinated technical design, sprint planning, code reviews and delivery with UK stakeholders.",
+        "Mentored engineers on implementation practices, solution design and debugging."
+      ]
+    },
+    {
       title: "System Analyst",
-      company: "Radiant Digital, Hyderabad (Remote)",
+      company: "Radiant Digital (Remote) · Client: Verizon NTT",
       date: "Mar 2024 – Aug 2025",
       bullets: [
-        "Led AI-driven automation initiatives, reducing manual intervention by 40% and improving accuracy of predictions in production systems.",
-        "Architected scalable backend solutions using Node.js, NestJS, PostgreSQL, and React.js supporting 100k+ daily active users.",
-        "Integrated ML models into core products, enabling real-time analytics and data-driven decision-making.",
-        "Defined and enforced backend best practices as Node.js Chapter Lead, improving deployment speed and code quality.",
-        "Built CI/CD pipelines with full automated testing, reducing release cycle from 2 weeks to 3 days.",
-        "Oversaw FCC-compliance critical telecom projects, achieving 100% compliance in audits.",
-        "Mentored 15+ developers on AI/ML integration, microservices, and serverless patterns.",
-      ],
+        "Designed and developed backend systems using Node.js, NestJS and PostgreSQL, alongside React-based applications.",
+        "Coordinated India-based development activities with US counterparts.",
+        "Served as Node.js Chapter Lead, supporting backend standards, coding practices and reusable patterns.",
+        "Worked on telecom infrastructure data and FCC-related workflows."
+      ]
     },
     {
       title: "Senior Software Engineer",
-      company: "Clarion Technologies, Pune (Remote)",
+      company: "Clarion Technologies (Remote) · Client: SSENSE",
       date: "Mar 2021 – Mar 2024",
       bullets: [
-        "Designed and deployed AWS serverless applications using Node.js and TypeScript, reducing infrastructure costs by 45%.",
-        "Implemented Datadog monitoring and alerting, increasing system observability and reducing downtime by 30%.",
-        "Delivered AI/ML-enabled features, enhancing automation and predictive analytics for client projects.",
-        "Collaborated globally to translate business requirements into robust, scalable technical solutions.",
-        "Introduced automated testing and code reviews, improving overall product quality and maintainability.",
-      ],
+        "Developed marketplace API integrations and SKU / product-data workflows for luxury brands, including Gucci.",
+        "Built full-stack and backend capabilities using Node.js and TypeScript.",
+        "Contributed to AWS serverless solutions, reporting capabilities and application monitoring.",
+        "Collaborated with client stakeholders to translate requirements into maintainable software."
+      ]
     },
     {
       title: "Senior Associate Delivery",
-      company: "SmartData Enterprises, Mohali",
+      company: "SmartData Enterprises Inc.",
       date: "Jan 2019 – Mar 2021",
       bullets: [
-        "Developed scalable web applications using Node.js, Angular, and Vue.js with AWS backend support.",
-        "Engineered high-performance solutions aligned with evolving client needs, reducing latency by 20%.",
-        "Mentored junior developers in full-stack best practices and Agile methodologies.",
-        "Led deployment of microservices-based architecture, enhancing modularity and reliability.",
-      ],
+        "Developed web applications using Node.js, Angular and JavaScript.",
+        "Worked with AWS EC2 and S3 resources and supported cloud cost optimisation.",
+        "Supported sprint planning, delivery coordination and developer mentoring."
+      ]
     },
     {
       title: "Senior Software Engineer",
-      company: "Praesidium IT Solutions, Mohali",
+      company: "Praesidium IT Solutions",
       date: "Oct 2017 – Jan 2019",
       bullets: [
-        "Managed AWS cloud infrastructure (EC2, S3, IAM), maintaining 99.9% uptime and high reliability.",
-        "Architected full-stack solutions with Angular, Node.js, and optimized REST APIs.",
-        "Designed MongoDB schemas for high-throughput, low-latency applications.",
-        "Led internal workshops on best practices for cloud-native development.",
-      ],
+        "Developed full-stack applications using Node.js and Angular.",
+        "Worked with AWS EC2, S3 and IAM and supported infrastructure reliability.",
+        "Designed REST APIs and optimised MongoDB schemas and indexes.",
+        "Conducted code reviews and mentored developers."
+      ]
     },
     {
       title: "Software Engineer",
-      company: "Acmeminds Pvt Ltd, Chandigarh",
+      company: "Acmeminds Pvt Ltd",
       date: "Aug 2013 – Oct 2017",
       bullets: [
-        "Enhanced GIS capabilities for MiRide.com using Google Maps API, improving routing efficiency by 25%.",
-        "Migrated legacy architecture to modern Node.js, Angular, and MongoDB stack.",
-        "Implemented reusable frontend components, improving development speed and UI consistency.",
-        "Worked on high-performance ASP.NET modules with SQL Server backend for enterprise clients.",
-      ],
-    },
+        "Developed web application modules using Node.js, Angular, JavaScript, ASP.NET and SQL Server.",
+        "Integrated Google Maps APIs and geolocation features into MiRide.com.",
+        "Implemented real-time ride-tracking capabilities and helped modernise legacy components."
+      ]
+    }
   ],
-
   projects: [
     {
-      name: "AI-driven Automation Tools",
-      desc: "Developed AI solutions automating dev workflows at Radiant Digital, reducing manual work by 40% and improving model deployment accuracy.",
-      link: "https://github.com/Saurabh11Sharma",
-      tags: ["AI/ML", "Automation", "Node.js", "AWS", "DevOps"],
+      name: "NestJS API",
+      desc: "Personal backend learning and implementation repository covering a NestJS TypeScript API, TypeORM and database configuration. Review the repository README for current setup and scope.",
+      link: "https://github.com/Saurabh11Sharma/nestjs-api",
+      tags: ["NestJS", "TypeScript", "TypeORM", "REST API"]
     },
     {
-      name: "FCC Compliance Project",
-      desc: "Engineered FCC-compliant telecom data systems for Verizon/NTT with zero audit findings.",
-      link: "https://github.com/Saurabh11Sharma",
-      tags: ["Node.js", "Postgres", "Compliance", "AWS", "Data Security"],
+      name: "NestJS Microservices",
+      desc: "A NestJS microservices codebase organised around applications and shared libraries, with Docker Compose support. See the repository for the implemented services and run instructions.",
+      link: "https://github.com/Saurabh11Sharma/nestjs-microservices",
+      tags: ["NestJS", "Microservices", "Docker", "TypeScript"]
     },
     {
-      name: "SSENSE Brand Integration & SKU Management",
-      desc: "Designed dynamic APIs and reporting tools for luxury brand integrations, optimizing SKU management processes.",
-      link: "https://github.com/Saurabh11Sharma",
-      tags: ["Node.js", "Postgres", "AWS", "Integration", "Automation"],
+      name: "AWS Serverless Node.js",
+      desc: "Node.js serverless service repository with separate auction, authentication and notification service areas.",
+      link: "https://github.com/Saurabh11Sharma/serverless-aws-nodejs",
+      tags: ["Node.js", "AWS", "Serverless", "Services"]
     },
     {
-      name: "Generative AI Experiments",
-      desc: "Research notebooks exploring LLM fine-tuning, LangChain pipelines, and Hugging Face models for enterprise use cases.",
-      link: "https://github.com/Saurabh11Sharma",
-      tags: ["LLM", "LangChain", "Hugging Face", "Python", "Generative AI"],
+      name: "DSA Practice in TypeScript",
+      desc: "A structured practice repository with algorithm categories, explanations, TypeScript solutions and tests.",
+      link: "https://github.com/Saurabh11Sharma/dsa-practice",
+      tags: ["TypeScript", "Algorithms", "Data Structures", "Testing"]
     },
+    {
+      name: "Developer Mastery Vault",
+      desc: "A personal knowledge base for software engineering topics, architecture, backend development and structured learning.",
+      link: "https://github.com/Saurabh11Sharma/Dev_Mastery_Vault",
+      tags: ["Learning", "Architecture", "Backend", "Books"]
+    }
   ],
 };
 
