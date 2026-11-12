@@ -1,593 +1,455 @@
-import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
 import {
-  Mail,
+  ArrowUpRight,
+  BookOpen,
+  Briefcase,
+  CheckCircle2,
+  Cloud,
+  Code2,
+  Database,
+  FileDown,
   Github,
   Linkedin,
-  FileDown,
-  Sun,
-  Moon,
+  Mail,
   MapPin,
-  ExternalLink,
-  ArrowUpRight,
+  Menu,
+  Moon,
+  ShieldCheck,
+  Sun,
+  Terminal,
+  X,
+  Layers,
 } from "lucide-react";
 
-/**
- * Interactive Online CV – Saurabh Sharma
- * -----------------------------------------------------------
- * Tech: React + Tailwind + Framer Motion + lucide-react icons
- * How to use:
- * 1) Ensure Tailwind is configured in your project (see chat for steps).
- * 2) Place a file named "/resume.pdf" in your public/ folder (or update RESUME_URL).
- * 3) Update the DATA object below with your real details.
- * 4) Deploy to GitHub Pages (saurabh11sharma.github.io) or Vercel/Netlify.
- */
-
-// === Editable profile data ===
-const DATA = {
-  competencies: [
-    "Backend Engineering",
-    "Full-Stack Development",
-    "Technical Leadership",
-    "Cloud & Serverless Architecture",
-    "Microservices",
-    "Domain-Driven Design (DDD)",
-    "Hexagonal Architecture",
-    "API Design & Integration",
-    "Database Design & Performance",
-    "CI/CD & Engineering Quality",
-    "System Design",
-    "Developer Mentoring",
-  ],
-  certifications: [
-    {
-      name: "Professional Certificate Course in Generative AI and Machine Learning",
-      org: "Certification",
-      year: "Completed",
-      type: "cert"
-    },
-    {
-      name: "Post Graduate Diploma in Information Technology Project Management",
-      org: "NMIMS",
-      year: "2021",
-      type: "edu"
-    },
-    {
-      name: "Bachelor of Technology in Computer Science",
-      org: "Uttar Pradesh Technical University",
-      year: "2013",
-      type: "edu"
-    }
-  ],
+const PROFILE = {
   name: "Saurabh Sharma",
-  role: "Senior Software Engineer · Technical Lead · Node.js & TypeScript",
+  role: "Senior Software Engineer & Technical Lead",
+  focus: "Node.js · TypeScript · AWS · Full-Stack Systems",
   location: "Uttar Pradesh, India · Open to Remote",
   email: "saurabh11sharma@live.com",
-  linkedin: "https://www.linkedin.com/in/saurabh11sharma/",
   github: "https://github.com/Saurabh11Sharma",
-  summary:
-    "Senior Software Engineer and Technical Lead with 13 years of experience delivering Node.js and TypeScript applications, AWS solutions and full-stack systems for international client projects. Experienced in backend architecture, REST APIs, PostgreSQL, MongoDB, CI/CD, cloud optimisation and engineering leadership. Combines hands-on development with technical design, mentoring and cross-functional delivery.",
-  highlights: [
-    "13 years of software engineering experience across backend, full-stack and cloud development.",
-    "Led an India-based engineering team and delivered the UKRI Funding Service Award Management module to production within the agreed timeline.",
-    "Worked with international client teams across UKRI, Verizon NTT and SSENSE engagements.",
-    "Contributed to AWS resource and service optimisation initiatives that reduced infrastructure costs by up to 50%.",
-    "Served as Node.js Chapter Lead, supporting shared backend standards and reusable engineering practices.",
-    "Built marketplace brand API integrations and SKU / product-data workflows, including integrations involving Gucci.",
-    "Focused on maintainable architecture, practical testing, code reviews and developer mentoring."
-  ],
-  skills: [
-    { name: "Node.js, JavaScript & TypeScript", level: 95 },
-    { name: "NestJS, REST APIs & GraphQL", level: 90 },
-    { name: "React.js & Next.js", level: 88 },
-    { name: "AWS & Serverless Architecture", level: 88 },
-    { name: "PostgreSQL, MongoDB & SQL", level: 86 },
-    { name: "Microservices & System Design", level: 86 },
-    { name: "DDD & Hexagonal Architecture", level: 84 },
-    { name: "Docker, CI/CD & Observability", level: 82 },
-    { name: "Technical Leadership & Mentoring", level: 90 }
-  ],
-  experiences: [
-    {
-      title: "Senior Technical Lead",
-      company: "FornaxTech (Remote) · Client: Kerv Digital, London, UK",
-      date: "Dec 2025 – Aug 2026",
-      bullets: [
-        "Led an India-based engineering team delivering modules for the UKRI Funding Service.",
-        "Delivered the Award Management module to production within the agreed timeline.",
-        "Worked across Next.js, React.js, TypeScript, PostgreSQL, AWS and Docker.",
-        "Applied Domain-Driven Design and Hexagonal Architecture to separate business logic from infrastructure concerns.",
-        "Coordinated technical design, sprint planning, code reviews and delivery with UK stakeholders.",
-        "Mentored engineers on implementation practices, solution design and debugging."
-      ]
-    },
-    {
-      title: "System Analyst",
-      company: "Radiant Digital (Remote) · Client: Verizon NTT",
-      date: "Mar 2024 – Aug 2025",
-      bullets: [
-        "Designed and developed backend systems using Node.js, NestJS and PostgreSQL, alongside React-based applications.",
-        "Coordinated India-based development activities with US counterparts.",
-        "Served as Node.js Chapter Lead, supporting backend standards, coding practices and reusable patterns.",
-        "Worked on telecom infrastructure data and FCC-related workflows."
-      ]
-    },
-    {
-      title: "Senior Software Engineer",
-      company: "Clarion Technologies (Remote) · Client: SSENSE",
-      date: "Mar 2021 – Mar 2024",
-      bullets: [
-        "Developed marketplace API integrations and SKU / product-data workflows for luxury brands, including Gucci.",
-        "Built full-stack and backend capabilities using Node.js and TypeScript.",
-        "Contributed to AWS serverless solutions, reporting capabilities and application monitoring.",
-        "Collaborated with client stakeholders to translate requirements into maintainable software."
-      ]
-    },
-    {
-      title: "Senior Associate Delivery",
-      company: "SmartData Enterprises Inc.",
-      date: "Jan 2019 – Mar 2021",
-      bullets: [
-        "Developed web applications using Node.js, Angular and JavaScript.",
-        "Worked with AWS EC2 and S3 resources and supported cloud cost optimisation.",
-        "Supported sprint planning, delivery coordination and developer mentoring."
-      ]
-    },
-    {
-      title: "Senior Software Engineer",
-      company: "Praesidium IT Solutions",
-      date: "Oct 2017 – Jan 2019",
-      bullets: [
-        "Developed full-stack applications using Node.js and Angular.",
-        "Worked with AWS EC2, S3 and IAM and supported infrastructure reliability.",
-        "Designed REST APIs and optimised MongoDB schemas and indexes.",
-        "Conducted code reviews and mentored developers."
-      ]
-    },
-    {
-      title: "Software Engineer",
-      company: "Acmeminds Pvt Ltd",
-      date: "Aug 2013 – Oct 2017",
-      bullets: [
-        "Developed web application modules using Node.js, Angular, JavaScript, ASP.NET and SQL Server.",
-        "Integrated Google Maps APIs and geolocation features into MiRide.com.",
-        "Implemented real-time ride-tracking capabilities and helped modernise legacy components."
-      ]
-    }
-  ],
-  projects: [
-    {
-      name: "NestJS API",
-      desc: "Personal backend learning and implementation repository covering a NestJS TypeScript API, TypeORM and database configuration. Review the repository README for current setup and scope.",
-      link: "https://github.com/Saurabh11Sharma/nestjs-api",
-      tags: ["NestJS", "TypeScript", "TypeORM", "REST API"]
-    },
-    {
-      name: "NestJS Microservices",
-      desc: "A NestJS microservices codebase organised around applications and shared libraries, with Docker Compose support. See the repository for the implemented services and run instructions.",
-      link: "https://github.com/Saurabh11Sharma/nestjs-microservices",
-      tags: ["NestJS", "Microservices", "Docker", "TypeScript"]
-    },
-    {
-      name: "AWS Serverless Node.js",
-      desc: "Node.js serverless service repository with separate auction, authentication and notification service areas.",
-      link: "https://github.com/Saurabh11Sharma/serverless-aws-nodejs",
-      tags: ["Node.js", "AWS", "Serverless", "Services"]
-    },
-    {
-      name: "DSA Practice in TypeScript",
-      desc: "A structured practice repository with algorithm categories, explanations, TypeScript solutions and tests.",
-      link: "https://github.com/Saurabh11Sharma/dsa-practice",
-      tags: ["TypeScript", "Algorithms", "Data Structures", "Testing"]
-    },
-    {
-      name: "Developer Mastery Vault",
-      desc: "A personal knowledge base for software engineering topics, architecture, backend development and structured learning.",
-      link: "https://github.com/Saurabh11Sharma/Dev_Mastery_Vault",
-      tags: ["Learning", "Architecture", "Backend", "Books"]
-    }
-  ],
+  linkedin: "https://www.linkedin.com/in/saurabh11sharma/",
+  resume: "/Saurabh_Sharma.pdf",
 };
 
-const RESUME_URL = "/Saurabh_Sharma.pdf"; // ⬅️ put your PDF in public/
+const expertise = [
+  {
+    icon: Code2,
+    title: "Backend engineering",
+    detail: "Node.js, TypeScript, NestJS, REST APIs, GraphQL, authentication, integrations and reliable service design.",
+    tags: ["Node.js", "TypeScript", "NestJS", "API design"],
+  },
+  {
+    icon: Layers,
+    title: "Full-stack product development",
+    detail: "React and Next.js applications, clear frontend boundaries, accessible interfaces and end-to-end product delivery.",
+    tags: ["React", "Next.js", "JavaScript", "UI architecture"],
+  },
+  {
+    icon: Cloud,
+    title: "Cloud & distributed systems",
+    detail: "AWS services, serverless workloads, microservices, Docker, CI/CD, operational visibility and cost awareness.",
+    tags: ["AWS", "Serverless", "Docker", "CI/CD"],
+  },
+  {
+    icon: Database,
+    title: "Data & persistence",
+    detail: "Relational modelling, PostgreSQL, MongoDB, SQL, query optimisation, data integrity and migrations.",
+    tags: ["PostgreSQL", "MongoDB", "SQL", "Data modelling"],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Architecture & engineering quality",
+    detail: "Domain-Driven Design, Hexagonal Architecture, automated testing, security basics and maintainable code.",
+    tags: ["DDD", "Hexagonal", "Testing", "Security"],
+  },
+  {
+    icon: Briefcase,
+    title: "Technical leadership",
+    detail: "Technical direction, code reviews, developer mentoring, delivery planning and collaboration across locations.",
+    tags: ["Team leadership", "Mentoring", "Agile", "Delivery"],
+  },
+];
 
-// --- UI helpers ---
-const Section = ({ id, title, children }) => (
-  <section id={id} className="max-w-6xl mx-auto px-6 md:px-8 py-16">
-    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight mb-10 flex items-center gap-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-fuchsia-500 to-cyan-400 drop-shadow-lg">
-      <span className="inline-block h-8 w-2 rounded bg-gradient-to-b from-blue-500 to-cyan-500" />
-      {title}
-    </h2>
-    {children}
-  </section>
-);
+const projects = [
+  {
+    category: "Backend API",
+    title: "NestJS API",
+    description: "A NestJS and TypeScript API codebase with user authentication, session handling, guarded routes, report workflows, DTO serialization, TypeORM and database migrations.",
+    stack: ["NestJS", "TypeScript", "TypeORM", "SQLite", "Jest"],
+    href: "https://github.com/Saurabh11Sharma/nestjs-api",
+    action: "Explore repository",
+  },
+  {
+    category: "Distributed systems",
+    title: "NestJS Microservices",
+    description: "A multi-application NestJS workspace with auth, payments and reservations services, shared libraries, Dockerfiles and a Docker Compose development setup.",
+    stack: ["NestJS", "Microservices", "Docker", "MongoDB", "JWT"],
+    href: "https://github.com/Saurabh11Sharma/nestjs-microservices",
+    action: "Explore repository",
+  },
+  {
+    category: "Cloud & serverless",
+    title: "AWS Serverless Node.js",
+    description: "A Node.js serverless codebase organised into auction, authentication and notification service areas. Review the individual service folders for current implementation status.",
+    stack: ["Node.js", "AWS", "Serverless Framework"],
+    href: "https://github.com/Saurabh11Sharma/serverless-aws-nodejs",
+    action: "Explore repository",
+  },
+  {
+    category: "Algorithms",
+    title: "DSA Practice in TypeScript",
+    description: "A structured interview-practice repository with categorised algorithm topics, explanations, TypeScript solutions and tests.",
+    stack: ["TypeScript", "Data Structures", "Algorithms", "Jest"],
+    href: "https://github.com/Saurabh11Sharma/dsa-practice",
+    action: "Explore repository",
+  },
+  {
+    category: "Learning library",
+    title: "Developer Mastery Vault",
+    description: "A growing engineering reference with a structured senior-engineer roadmap, architecture notes, Node.js and TypeScript topics, PostgreSQL, AWS and a curated technical bookshelf.",
+    stack: ["System Design", "Node.js", "PostgreSQL", "AWS", "Books"],
+    href: "https://github.com/Saurabh11Sharma/Dev_Mastery_Vault",
+    action: "Open learning vault",
+  },
+  {
+    category: "AI & learning",
+    title: "AI / ML Learning Vault",
+    description: "A separate Obsidian-oriented workspace organised around roadmaps, lectures, papers, projects, resources, templates and journals.",
+    stack: ["AI / ML", "Research", "Learning notes"],
+    href: "https://github.com/Saurabh11Sharma/AI_ML_Learning",
+    action: "Explore repository",
+  },
+];
 
-const Badge = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border px-3 py-1 text-sm font-semibold leading-6 backdrop-blur border-fuchsia-400/50 dark:border-cyan-400/30 bg-fuchsia-100/60 dark:bg-cyan-900/30 text-fuchsia-700 dark:text-cyan-200 shadow-sm">
-    {children}
-  </span>
-);
+const experience = [
+  {
+    role: "Senior Technical Lead",
+    company: "FornaxTech · Client: Kerv Digital, London, UK",
+    period: "Dec 2025 – Aug 2026",
+    points: [
+      "Led an India-based engineering team delivering modules for the UKRI Funding Service.",
+      "Delivered the Award Management module to production within the agreed timeline.",
+      "Worked across Next.js, React, TypeScript, PostgreSQL, AWS and Docker, applying DDD and Hexagonal Architecture.",
+      "Coordinated technical design, sprint planning, code reviews and delivery with UK stakeholders.",
+    ],
+  },
+  {
+    role: "System Analyst",
+    company: "Radiant Digital · Client: Verizon NTT",
+    period: "Mar 2024 – Aug 2025",
+    points: [
+      "Designed and developed backend systems using Node.js, NestJS and PostgreSQL, alongside React-based applications.",
+      "Coordinated India-based development activities with US counterparts.",
+      "Served as Node.js Chapter Lead, supporting backend standards, coding practices and reusable patterns.",
+      "Worked on telecom infrastructure data and FCC-related workflows.",
+    ],
+  },
+  {
+    role: "Senior Software Engineer",
+    company: "Clarion Technologies · Client: SSENSE",
+    period: "Mar 2021 – Mar 2024",
+    points: [
+      "Developed marketplace API integrations and SKU / product-data workflows for luxury brands, including Gucci.",
+      "Built full-stack and backend capabilities using Node.js and TypeScript.",
+      "Contributed to AWS serverless solutions, reporting capabilities and application monitoring.",
+      "Collaborated with client stakeholders to translate requirements into maintainable software.",
+    ],
+  },
+  {
+    role: "Senior Associate Delivery",
+    company: "SmartData Enterprises Inc.",
+    period: "Jan 2019 – Mar 2021",
+    points: [
+      "Developed web applications using Node.js, Angular and JavaScript.",
+      "Worked with AWS EC2 and S3 resources and supported cloud cost optimisation.",
+      "Supported sprint planning, delivery coordination and developer mentoring.",
+    ],
+  },
+  {
+    role: "Senior Software Engineer",
+    company: "Praesidium IT Solutions",
+    period: "Oct 2017 – Jan 2019",
+    points: [
+      "Developed full-stack applications using Node.js and Angular.",
+      "Worked with AWS EC2, S3 and IAM and supported infrastructure reliability.",
+      "Designed REST APIs, optimised MongoDB schemas and indexes, and mentored developers.",
+    ],
+  },
+  {
+    role: "Software Engineer",
+    company: "Acmeminds Pvt Ltd",
+    period: "Aug 2013 – Oct 2017",
+    points: [
+      "Developed web application modules using Node.js, Angular, JavaScript, ASP.NET and SQL Server.",
+      "Integrated Google Maps APIs and geolocation features into MiRide.com.",
+      "Implemented real-time ride-tracking capabilities and helped modernise legacy components.",
+    ],
+  },
+];
 
-const ProgressBar = ({ value }) => (
-  <div className="w-full h-2 rounded-full bg-gradient-to-r from-gray-200 via-fuchsia-100 to-cyan-100 dark:from-slate-800 dark:via-fuchsia-900 dark:to-cyan-900 overflow-hidden">
-    <motion.div
-      className="h-full rounded-full bg-gradient-to-r from-blue-600 via-fuchsia-500 to-cyan-400 shadow-lg"
-      initial={{ width: 0 }}
-      whileInView={{ width: `${value}%` }}
-      transition={{ duration: 1.1, ease: 'easeOut' }}
-      viewport={{ once: true }}
-    />
-  </div>
-);
+const books = [
+  {
+    title: "A Philosophy of Software Design",
+    author: "John Ousterhout",
+    topic: "Managing complexity and designing clear modules",
+    url: "https://www.goodreads.com/book/show/39996759-a-philosophy-of-software-design",
+  },
+  {
+    title: "Designing Data-Intensive Applications",
+    author: "Martin Kleppmann",
+    topic: "Storage, replication, transactions and distributed systems",
+    url: "https://dataintensive.net/",
+  },
+  {
+    title: "The Pragmatic Programmer",
+    author: "David Thomas & Andrew Hunt",
+    topic: "Engineering habits, feedback loops and maintainability",
+    url: "https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/",
+  },
+  {
+    title: "Domain-Driven Design Distilled",
+    author: "Vaughn Vernon",
+    topic: "Bounded contexts, ubiquitous language and DDD",
+    url: "https://www.domainlanguage.com/ddd/",
+  },
+];
 
-export default function OnlineCV() {
-  // Default to dark mode
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== 'undefined' && window.matchMedia) {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches;
-    }
-    return true;
-  });
-  const { scrollYProgress } = useScroll();
-  const width = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+function SectionHeading({ eyebrow, title, description }) {
+  return (
+    <div className="section-heading">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {description ? <p className="section-description">{description}</p> : null}
+    </div>
+  );
+}
 
-  // Show more toggles
-  const [showAllHighlights, setShowAllHighlights] = useState(false);
-  const [showFullSummary, setShowFullSummary] = useState(false);
+function App() {
+  const [dark, setDark] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [dark]);
+  const navItems = [
+    ["About", "#about"],
+    ["Expertise", "#expertise"],
+    ["Projects", "#projects"],
+    ["Experience", "#experience"],
+    ["Learning", "#learning"],
+    ["Contact", "#contact"],
+  ];
 
-  useEffect(() => {
-    const handler = (e) => {
-      const a = e.target.closest("a[href^='#']");
-      if (a) {
-        e.preventDefault();
-        const id = a.getAttribute("href").slice(1);
-        const el = document.getElementById(id);
-        el?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
-  }, []);
+  const closeMenu = () => setMobileOpen(false);
 
   return (
-    <div>
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-fuchsia-100 to-cyan-100 dark:from-slate-950 dark:via-fuchsia-950 dark:to-cyan-900 text-slate-800 dark:text-slate-100 transition-colors duration-700">
-        {/* Top progress bar */}
-        <motion.div
-          style={{ width }}
-          className="fixed top-0 left-0 h-1 z-50 bg-gradient-to-r from-blue-600 via-fuchsia-500 to-cyan-400 shadow-lg"
-          initial={{ width: 0 }}
-          animate={{ width }}
-          transition={{ duration: 0.7, ease: 'easeInOut' }}
-        />
+    <div className={dark ? "app-shell dark-theme" : "app-shell"}>
+      <header className="site-header">
+        <div className="nav-wrap">
+          <a className="brand" href="#home" onClick={closeMenu} aria-label="Saurabh Sharma home">
+            <span className="brand-mark">SS</span>
+            <span>Saurabh Sharma<span className="brand-subtitle">ENGINEERING PORTFOLIO</span></span>
+          </a>
 
-        {/* Navbar with contact bar and tech stack icons */}
-        <header className="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-fuchsia-200/40 dark:border-cyan-400/20 shadow-md transition-colors duration-700">
-          {/* Quick contact bar */}
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="hidden md:flex justify-between items-center px-8 py-1 text-xs bg-gradient-to-r from-blue-50 via-fuchsia-50 to-cyan-50 dark:from-slate-950 dark:via-fuchsia-950 dark:to-cyan-900 border-b border-fuchsia-200/40 dark:border-cyan-400/20"
-          >
-            <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-1"><Mail size={14}/> {DATA.email}</span>
-              <a href={DATA.linkedin} target="_blank" className="inline-flex items-center gap-1 hover:text-fuchsia-600 dark:hover:text-cyan-400 transition"><Linkedin size={14}/> LinkedIn</a>
-              <a href={DATA.github} target="_blank" className="inline-flex items-center gap-1 hover:text-fuchsia-600 dark:hover:text-cyan-400 transition"><Github size={14}/> GitHub</a>
-            </div>
-            <a href={RESUME_URL} className="inline-flex items-center gap-1 px-2 py-1 rounded border border-fuchsia-400/40 dark:border-cyan-400/20 bg-fuchsia-100/60 dark:bg-cyan-900/30 text-fuchsia-700 dark:text-cyan-200 shadow hover:shadow-lg transition"><FileDown size={14}/> Resume</a>
-          </motion.div>
-          <div className="max-w-6xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between">
-            <a href="#home" className="font-extrabold tracking-tight text-xl md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-fuchsia-500 to-cyan-400 drop-shadow">
-              Saurabh Sharma
-            </a>
-            <nav className="hidden md:flex items-center gap-6 text-base font-semibold">
-              <motion.a whileHover={{ scale: 1.1 }} href="#about" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">About</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#skills" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Skills</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#experience" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Experience</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#certifications" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Certifications</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#education" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Education</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#projects" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Projects</motion.a>
-              <motion.a whileHover={{ scale: 1.1 }} href="#contact" className="hover:text-fuchsia-600 dark:hover:text-cyan-400 transition">Contact</motion.a>
-            </nav>
-            <div className="flex items-center gap-2">
-              <motion.button
-                whileTap={{ scale: 0.85, rotate: 20 }}
-                onClick={() => setDark((d) => !d)}
-                className="inline-flex items-center justify-center h-9 w-9 rounded-xl border border-fuchsia-400/40 dark:border-cyan-400/20 bg-gradient-to-br from-fuchsia-100 to-cyan-100 dark:from-fuchsia-900 dark:to-cyan-900 shadow hover:shadow-lg transition"
-                aria-label="Toggle theme"
-              >
-                <motion.span
-                  key={dark ? 'sun' : 'moon'}
-                  initial={{ rotate: 180, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -180, opacity: 0 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                >
-                  {dark ? <Sun size={18} /> : <Moon size={18} />}
-                </motion.span>
-              </motion.button>
-            </div>
-          </div>
-          {/* Tech stack icon row */}
-          <div className="hidden md:flex justify-center items-center gap-6 py-2 bg-gradient-to-r from-blue-50 via-fuchsia-50 to-cyan-50 dark:from-slate-950 dark:via-fuchsia-950 dark:to-cyan-900 border-t border-fuchsia-200/40 dark:border-cyan-400/20">
-            {/* Example icons, replace/add as needed for your stack */}
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-7 w-7" title="Node.js"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-7 w-7" title="TypeScript"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-7 w-7" title="React.js"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS" className="h-7 w-7" title="AWS"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-7 w-7" title="Docker"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-7 w-7" title="Python"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-7 w-7" title="MongoDB"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="Postgres" className="h-7 w-7" title="Postgres"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" className="h-7 w-7" title="Kubernetes"/>
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="h-7 w-7" title="Git"/>
-          </div>
-        </header>
+          <nav className={mobileOpen ? "main-nav nav-open" : "main-nav"} aria-label="Main navigation">
+            {navItems.map(([label, href]) => (
+              <a key={href} href={href} onClick={closeMenu}>{label}</a>
+            ))}
+            <a className="nav-contact" href="#contact" onClick={closeMenu}>Let's connect <ArrowUpRight size={15} /></a>
+          </nav>
 
-        {/* Hero */}
-        <section id="home" className="max-w-6xl mx-auto px-6 md:px-8 pt-14 pb-10">
-          <div className="grid md:grid-cols-[1.1fr_.9fr] gap-8 items-center">
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-3xl md:text-5xl font-extrabold tracking-tight"
-              >
-                {DATA.name}
-              </motion.h1>
-              <p className="mt-3 text-lg md:text-xl text-slate-600 dark:text-slate-300">
-                {DATA.role}
+          <div className="nav-actions">
+            <button className="icon-button" onClick={() => setDark(!dark)} aria-label={dark ? "Switch to light theme" : "Switch to dark theme"}>
+              {dark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button className="icon-button mobile-menu-button" onClick={() => setMobileOpen(!mobileOpen)} aria-label={mobileOpen ? "Close navigation" : "Open navigation"}>
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section className="hero-section" id="home">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="availability"><span className="availability-dot" /> OPEN TO REMOTE OPPORTUNITIES</div>
+              <p className="hero-kicker">HELLO, I'M SAURABH SHARMA</p>
+              <h1>I build <span>reliable software</span> for real-world problems.</h1>
+              <p className="hero-summary">
+                {PROFILE.role} with <strong>13 years of experience</strong> building backend platforms, cloud solutions and full-stack applications — and helping engineering teams deliver with confidence.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Badge><MapPin size={16} className="mr-1" /> {DATA.location}</Badge>
-                <a href={RESUME_URL} className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm hover:shadow border-black/10 dark:border-white/10">
-                  <FileDown size={16} /> Download Resume
-                </a>
-                <button
-                  onClick={() => window.print()}
-                  className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm hover:shadow border-black/10 dark:border-white/10"
-                >
-                  <ArrowUpRight size={16} /> Print to PDF
-                </button>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#projects">Explore my work <ArrowUpRight size={17} /></a>
+                <a className="button button-secondary" href={PROFILE.resume} target="_blank" rel="noreferrer"><FileDown size={17} /> View résumé</a>
               </div>
-              <ul className="mt-6 grid gap-2">
-                {(showAllHighlights ? DATA.highlights : DATA.highlights.slice(0, 3)).map((h) => (
-                  <li key={h} className="flex items-start gap-3">
-                    <span className="mt-1 inline-block h-2 w-2 rounded-full bg-blue-600" />
-                    <span className="text-slate-700 dark:text-slate-300">{h}</span>
-                  </li>
-                ))}
-              </ul>
-              {DATA.highlights.length > 3 && (
-                <button
-                  className="mt-2 text-sm text-fuchsia-700 dark:text-cyan-300 underline hover:opacity-80 transition"
-                  onClick={() => setShowAllHighlights((v) => !v)}
-                >
-                  {showAllHighlights ? 'Show less' : 'Show more'}
-                </button>
-              )}
-              <p className="mt-6 text-slate-700/90 dark:text-slate-300/90 leading-relaxed text-lg font-medium">
-                {showFullSummary
-                  ? DATA.summary
-                  : DATA.summary.split('. ').slice(0,1).join('. ') + '.'}
-                {DATA.summary.split('. ').length > 1 && (
-                  <button
-                    className="ml-2 text-sm text-fuchsia-700 dark:text-cyan-300 underline hover:opacity-80 transition"
-                    onClick={() => setShowFullSummary((v) => !v)}
-                  >
-                    {showFullSummary ? 'Show less' : 'Read more'}
-                  </button>
-                )}
-              </p>
-              <div className="mt-6 flex gap-3">
-                <a href={`mailto:${DATA.email}`} className="inline-flex items-center gap-2 rounded-xl px-3 py-2 border hover:shadow border-black/10 dark:border-white/10"><Mail size={16}/> Email</a>
-                <a href={DATA.github} target="_blank" className="inline-flex items-center gap-2 rounded-xl px-3 py-2 border hover:shadow border-black/10 dark:border-white/10"><Github size={16}/> GitHub</a>
-                <a href={DATA.linkedin} target="_blank" className="inline-flex items-center gap-2 rounded-xl px-3 py-2 border hover:shadow border-black/10 dark:border-white/10"><Linkedin size={16}/> LinkedIn</a>
+              <div className="hero-socials">
+                <a href={PROFILE.github} target="_blank" rel="noreferrer"><Github size={17} /> GitHub</a>
+                <a href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17} /> LinkedIn</a>
+                <a href={`mailto:${PROFILE.email}`}><Mail size={17} /> Email</a>
               </div>
             </div>
 
-            {/* GitHub cards */}
-            <div className="grid gap-4">
-              <img
-                className="rounded-xl border border-black/10 dark:border-white/10"
-                src={`https://github-readme-stats.vercel.app/api?username=Saurabh11Sharma&show_icons=true&theme=transparent`}
-                alt="GitHub stats"
-                loading="lazy"
-              />
-              <img
-                className="rounded-xl border border-black/10 dark:border-white/10"
-                src={`https://github-readme-streak-stats.herokuapp.com?user=Saurabh11Sharma&theme=dark&hide_border=true&date_format=j%20M%5B%20Y%5D`}
-                alt="GitHub streak"
-                loading="lazy"
-              />
-              <img
-                className="rounded-xl border border-black/10 dark:border-white/10"
-                src={`https://github-readme-stats.vercel.app/api/top-langs/?username=Saurabh11Sharma&layout=compact&theme=transparent`}
-                alt="Top languages"
-                loading="lazy"
-              />
+            <div className="hero-aside">
+              <div className="code-card">
+                <div className="code-card-top"><span /><span /><span /><label>engineering-focus.ts</label></div>
+                <div className="code-body">
+                  <p><span className="code-purple">const</span> engineer = {'{'}</p>
+                  <p className="code-indent"><span className="code-blue">experience</span>: <span className="code-green">"13+ years"</span>,</p>
+                  <p className="code-indent"><span className="code-blue">speciality</span>: <span className="code-green">"Backend & Full-Stack"</span>,</p>
+                  <p className="code-indent"><span className="code-blue">stack</span>: [</p>
+                  <p className="code-indent code-indent-2"><span className="code-green">"Node.js"</span>, <span className="code-green">"TypeScript"</span>,</p>
+                  <p className="code-indent code-indent-2"><span className="code-green">"React"</span>, <span className="code-green">"AWS"</span></p>
+                  <p className="code-indent">],</p>
+                  <p className="code-indent"><span className="code-blue">approach</span>: <span className="code-green">"Practical architecture"</span></p>
+                  <p>{'}'};</p>
+                  <div className="code-cursor" />
+                </div>
+                <div className="code-card-bottom"><Terminal size={15} /> Turning complex requirements into maintainable systems.</div>
+              </div>
+              <div className="hero-note">
+                <div className="hero-note-icon"><CheckCircle2 size={20} /></div>
+                <div><strong>Hands-on engineering. Team-level impact.</strong><span>Architecture · Delivery · Mentoring</span></div>
+              </div>
+            </div>
+          </div>
+          <div className="hero-metrics">
+            <div><strong>13<span>+</span></strong><small>Years in software engineering</small></div>
+            <div><strong>3</strong><small>International client engagements highlighted</small></div>
+            <div><strong>50<span>%</span></strong><small>Reported AWS cost reduction contribution</small></div>
+            <div><strong>Remote</strong><small>Distributed team collaboration</small></div>
+          </div>
+        </section>
+
+        <section className="section about-section" id="about">
+          <SectionHeading eyebrow="A LITTLE ABOUT ME" title="Engineering with context, not just code." description="I enjoy solving backend and product engineering problems where maintainability, delivery and operational behaviour matter." />
+          <div className="about-grid">
+            <div className="about-copy">
+              <p>
+                Over the course of my career, I have worked across backend engineering, full-stack application development, AWS cloud solutions and technical leadership. My core stack is JavaScript and TypeScript, with Node.js, NestJS, React, Next.js and relational and NoSQL databases.
+              </p>
+              <p>
+                I have collaborated with teams and stakeholders across the UK, US and international product organisations. My recent work includes leading an India-based team for Kerv Digital's UKRI Funding Service and delivering the Award Management module to production within the agreed timeline.
+              </p>
+              <p>
+                I value clear boundaries, simple solutions, thoughtful trade-offs, useful tests and documentation that helps the next engineer understand the system.
+              </p>
+              <div className="location-line"><MapPin size={16} /> {PROFILE.location}</div>
+            </div>
+            <div className="principles-card">
+              <p className="eyebrow">HOW I APPROACH ENGINEERING</p>
+              {[
+                ["01", "Understand the domain", "Start with users, workflows, constraints and business rules."],
+                ["02", "Design for change", "Keep responsibilities clear and dependencies pointing in the right direction."],
+                ["03", "Build for operation", "Treat security, testing, observability and failure handling as part of the solution."],
+                ["04", "Raise the team", "Share context, mentor developers and make delivery more predictable."],
+              ].map(([number, title, body]) => (
+                <div className="principle-row" key={number}>
+                  <span>{number}</span><div><strong>{title}</strong><p>{body}</p></div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        <Section id="about" title="About">
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <p className="leading-relaxed text-slate-700 dark:text-slate-300 text-lg font-medium">
-                12+ years in digital transformation, cloud-native & full-stack engineering. Expert in Node.js, TypeScript, React.js, AWS, and AI/ML integration. Passionate about building scalable systems, leading teams, and driving innovation.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {DATA.skills.map((s) => (
-                <Badge key={s.name}>{s.name}</Badge>
-              ))}
-            </div>
-          </div>
-          {/* Core Competencies horizontal scroll */}
-          <div className="mt-8 overflow-x-auto pb-2">
-            <div className="flex gap-3 min-w-max">
-              {DATA.competencies.map((c) => (
-                <Badge key={c}>{c}</Badge>
-              ))}
-            </div>
-          </div>
-        </Section>
-
-        <Section id="skills" title="Skills">
-          <div className="grid md:grid-cols-2 gap-6">
-            {DATA.skills.map((s) => (
-              <div key={s.name} className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-medium">{s.name}</span>
-                  <span className="text-sm opacity-70">{s.level}%</span>
-                </div>
-                <ProgressBar value={s.level} />
-              </div>
+        <section className="section expertise-section" id="expertise">
+          <SectionHeading eyebrow="WHAT I BRING" title="A broad engineering toolkit." description="My strongest work sits at the intersection of backend systems, cloud infrastructure, full-stack delivery and technical leadership." />
+          <div className="expertise-grid">
+            {expertise.map(({ icon: Icon, title, detail, tags }) => (
+              <article className="expertise-card" key={title}>
+                <div className="card-icon"><Icon size={21} /></div>
+                <h3>{title}</h3>
+                <p>{detail}</p>
+                <div className="tag-list">{tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+              </article>
             ))}
           </div>
-        </Section>
+        </section>
 
-        <Section id="experience" title="Experience">
-          <div className="space-y-6">
-            {DATA.experiences.map((exp, i) => (
-              <div key={exp.title + exp.company + i} className="p-5 rounded-2xl border border-black/10 dark:border-white/10">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                  <div>
-                    <h3 className="font-semibold text-lg">{exp.title}</h3>
-                    <p className="text-sm opacity-80">{exp.company}</p>
-                  </div>
-                  <p className="text-sm opacity-80">{exp.date}</p>
-                </div>
-                <ul className="mt-3 grid gap-2 list-disc pl-5">
-                  {exp.bullets.map((b, i) => (
-                    <li key={i} className="text-slate-700 dark:text-slate-300">{b}</li>
-                  ))}
-                </ul>
-              </div>
+        <section className="section projects-section" id="projects">
+          <SectionHeading eyebrow="SELECTED WORK & PUBLIC REPOSITORIES" title="Explore the code and learning work." description="These links point to public repositories. Each card describes the visible repository scope; check its README for setup instructions, current implementation status and known limitations." />
+          <div className="projects-grid">
+            {projects.map((project, index) => (
+              <article className="project-card" key={project.title}>
+                <div className="project-card-top"><span className="project-index">0{index + 1}</span><span className="project-category">{project.category}</span></div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="tag-list">{project.stack.map(tag => <span key={tag}>{tag}</span>)}</div>
+                <a className="project-link" href={project.href} target="_blank" rel="noreferrer">{project.action} <ArrowUpRight size={17} /></a>
+              </article>
             ))}
           </div>
-          {/* Certifications & Education section */}
-          <div id="certifications" className="mt-12 scroll-mt-24">
-            <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-fuchsia-500 to-cyan-400">Certifications</h3>
-              <div className="flex flex-wrap gap-4">
-                {DATA.certifications.filter(c => c.type === 'cert').map((cert) => (
-                  <div key={cert.name} className="rounded-xl border border-fuchsia-400/30 dark:border-cyan-400/20 bg-white/70 dark:bg-white/10 px-5 py-3 min-w-[220px] shadow-sm">
-                    <div className="font-semibold text-fuchsia-700 dark:text-cyan-200">{cert.name}</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">{cert.org} &middot; {cert.year}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div id="education">
-              <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-fuchsia-500 to-blue-400">Education</h3>
-              <div className="flex flex-wrap gap-4">
-                {DATA.certifications.filter(c => c.type === 'edu').map((edu) => (
-                  <div key={edu.name} className="rounded-xl border border-cyan-400/30 dark:border-fuchsia-400/20 bg-white/70 dark:bg-white/10 px-5 py-3 min-w-[220px] shadow-sm">
-                    <div className="font-semibold text-cyan-700 dark:text-fuchsia-200">{edu.name}</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">{edu.org} &middot; {edu.year}</div>
-                  </div>
-                ))}
-              </div>
+          <div className="professional-case">
+            <div className="case-icon"><Briefcase size={22} /></div>
+            <div>
+              <p className="eyebrow">PROFESSIONAL DELIVERY · PRIVATE SOURCE CODE</p>
+              <h3>UKRI Funding Service — Award Management</h3>
+              <p>At FornaxTech, working with Kerv Digital (London), I led an India-based engineering team and delivered the Award Management module to production within the agreed timeline. The work used Next.js, React, TypeScript, PostgreSQL, AWS and Docker, with DDD and Hexagonal Architecture. Client source code is not published in this portfolio.</p>
             </div>
           </div>
-        </Section>
+        </section>
 
-        <Section id="projects" title="Projects">
-          <div className="grid md:grid-cols-2 gap-6">
-            {DATA.projects.map((p) => (
-              <motion.a
-                key={p.name}
-                href={p.link}
-                target="_blank"
-                className="group p-5 rounded-2xl border border-black/10 dark:border-white/10 hover:shadow-lg transition bg-white/60 dark:bg-white/5 backdrop-blur"
-                whileHover={{ y: -2 }}
-              >
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold text-lg">{p.name}</h3>
-                  <ExternalLink className="opacity-60 group-hover:opacity-100" size={18} />
+        <section className="section experience-section" id="experience">
+          <SectionHeading eyebrow="CAREER JOURNEY" title="Experience across products and platforms." description="A summary of the roles and client engagements in my current résumé." />
+          <div className="timeline">
+            {experience.map((item, index) => (
+              <article className="timeline-item" key={item.company}>
+                <div className="timeline-marker">{index + 1}</div>
+                <div className="timeline-content">
+                  <div className="timeline-heading"><div><h3>{item.role}</h3><p>{item.company}</p></div><time>{item.period}</time></div>
+                  <ul>{item.points.map(point => <li key={point}>{point}</li>)}</ul>
                 </div>
-                <p className="mt-2 text-sm opacity-80">{p.desc}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {p.tags.map((t) => (
-                    <Badge key={t}>{t}</Badge>
-                  ))}
-                </div>
-              </motion.a>
+              </article>
             ))}
           </div>
-        </Section>
+        </section>
 
-        <Section id="contact" title="Contact">
-          <div className="grid md:grid-cols-2 gap-6 items-center">
-            <div className="space-y-3">
-              <a href={`mailto:${DATA.email}`} className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Mail size={18} /></div>
-                <span>{DATA.email}</span>
+        <section className="section learning-section" id="learning">
+          <SectionHeading eyebrow="ALWAYS LEARNING" title="A practical engineering bookshelf." description="The books and notes I use to deepen my understanding of software design, distributed systems and engineering practice." />
+          <div className="learning-banner">
+            <div className="learning-banner-icon"><BookOpen size={24} /></div>
+            <div><strong>Developer Mastery Vault</strong><p>A growing set of roadmaps and original study notes covering Node.js, TypeScript, PostgreSQL, AWS, system design, architecture and engineering quality.</p></div>
+            <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault" target="_blank" rel="noreferrer">Browse the vault <ArrowUpRight size={16} /></a>
+          </div>
+          <div className="books-grid">
+            {books.map(book => (
+              <a className="book-card" href={book.url} target="_blank" rel="noreferrer" key={book.title}>
+                <BookOpen size={18} />
+                <div><h3>{book.title}</h3><span>{book.author}</span><p>{book.topic}</p></div>
+                <ArrowUpRight size={16} className="book-arrow" />
               </a>
-              <a href={DATA.linkedin} target="_blank" className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Linkedin size={18} /></div>
-                <span>LinkedIn</span>
-              </a>
-              <a href={DATA.github} target="_blank" className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl border flex items-center justify-center border-black/10 dark:border-white/10"><Github size={18} /></div>
-                <span>GitHub</span>
-              </a>
+            ))}
+          </div>
+          <div className="learning-links">
+            <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault/blob/master/ROADMAP.md" target="_blank" rel="noreferrer">Senior engineering roadmap</a>
+            <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault/blob/master/SYSTEM_DESIGN_AND_ARCHITECTURE.md" target="_blank" rel="noreferrer">System design notes</a>
+            <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault/blob/master/POSTGRESQL.md" target="_blank" rel="noreferrer">PostgreSQL practice notes</a>
+            <a href="https://github.com/Saurabh11Sharma/Dev_Mastery_Vault/blob/master/AWS_CLOUD_ENGINEERING.md" target="_blank" rel="noreferrer">AWS cloud notes</a>
+          </div>
+        </section>
+
+        <section className="contact-section" id="contact">
+          <div className="contact-inner">
+            <p className="eyebrow">HAVE A ROLE OR ENGINEERING CHALLENGE?</p>
+            <h2>Let's build something <span>useful.</span></h2>
+            <p>Open to remote Senior Software Engineer, Lead Engineer and Backend / Full-Stack opportunities.</p>
+            <div className="contact-actions">
+              <a className="button button-light" href={`mailto:${PROFILE.email}`}><Mail size={17} /> Get in touch</a>
+              <a className="button button-outline-light" href={PROFILE.linkedin} target="_blank" rel="noreferrer"><Linkedin size={17} /> Connect on LinkedIn</a>
             </div>
-            <form
-              className="p-5 rounded-2xl border border-black/10 dark:border-white/10 bg-white/60 dark:bg-white/5 backdrop-blur"
-              onSubmit={(e) => {
-                e.preventDefault();
-                const data = new FormData(e.currentTarget);
-                const subject = encodeURIComponent("Hello from your Online CV");
-                const body = encodeURIComponent(
-                  `Hi Saurabh,%0D%0A%0D%0A` +
-                    `${data.get("name")} (${data.get("email")}) wrote:%0D%0A` +
-                    `${data.get("message")}`
-                );
-                window.location.href = `mailto:${DATA.email}?subject=${subject}&body=${body}`;
-              }}
-            >
-              <div className="grid gap-3">
-                <div className="grid md:grid-cols-2 gap-3">
-                  <input name="name" placeholder="Your name" className="h-11 rounded-xl px-3 border border-black/10 dark:border-white/10 bg-transparent" required />
-                  <input name="email" type="email" placeholder="Your email" className="h-11 rounded-xl px-3 border border-black/10 dark:border-white/10 bg-transparent" required />
-                </div>
-                <textarea name="message" rows={4} placeholder="Message" className="rounded-xl px-3 py-2 border border-black/10 dark:border-white/10 bg-transparent" required />
-                <button className="inline-flex items-center justify-center h-11 rounded-xl border border-black/10 dark:border-white/10 hover:shadow">Send Email</button>
-              </div>
-            </form>
+            <div className="contact-meta"><span><MapPin size={15} /> India · Remote</span><span><Mail size={15} /> {PROFILE.email}</span></div>
           </div>
-        </Section>
+        </section>
+      </main>
 
-        <footer className="border-t border-black/5 dark:border-white/10 py-10 mt-6">
-          <div className="max-w-6xl mx-auto px-6 md:px-8 text-sm opacity-70 flex flex-col md:flex-row items-center justify-between gap-2">
-            <p>© {new Date().getFullYear()} {DATA.name}. All rights reserved.</p>
-            <p>
-              Built with React · Tailwind · Framer Motion · Hosted on GitHub Pages
-            </p>
-          </div>
-        </footer>
-      </div>
-
-      {/* Print styles */}
-      <style>{`
-        @media print {
-          header, .group:hover, .hover\\:shadow, .hover\\:shadow-lg { box-shadow: none !important; }
-          a[href^="#"] { display: none; }
-          button { display: none; }
-        }
-      `}</style>
+      <footer className="site-footer">
+        <div><strong>Saurabh Sharma</strong><span>Engineering Portfolio · {new Date().getFullYear()}</span></div>
+        <div className="footer-links">
+          <a href={PROFILE.github} target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18} /></a>
+          <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a>
+          <a href={`mailto:${PROFILE.email}`} aria-label="Email"><Mail size={18} /></a>
+        </div>
+      </footer>
     </div>
   );
 }
+
+export default App;
