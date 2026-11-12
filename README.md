@@ -1,172 +1,83 @@
+# Saurabh Sharma — Engineering Portfolio
 
-# 🌐 Saurabh Sharma — Interactive Online CV
+**Live site:** https://saurabh11sharma.github.io  
+**GitHub:** https://github.com/Saurabh11Sharma
 
-![GitHub last commit](https://img.shields.io/github/last-commit/Saurabh11Sharma/saurabh11sharma.github.io)
-![GitHub repo size](https://img.shields.io/github/repo-size/Saurabh11Sharma/saurabh11sharma.github.io)
-![GitHub stars](https://img.shields.io/github/stars/Saurabh11Sharma/saurabh11sharma.github.io?style=social)
+A responsive professional portfolio for a Senior Software Engineer and Technical Lead with 13 years of experience across Node.js, TypeScript, AWS, React, Next.js, backend systems and engineering leadership.
 
-> **Live:** [saurabh11sharma.github.io](https://saurabh11sharma.github.io)
+## What the site contains
 
----
+- A clear professional introduction and engineering focus.
+- Core capabilities across backend, frontend, cloud, data, architecture and technical leadership.
+- Links to public repositories with descriptions based on their current contents.
+- A professional delivery summary for UKRI Funding Service Award Management. Client source code is private and is not published here.
+- Career history aligned with the current résumé.
+- A learning section linking to the Developer Mastery Vault and selected technical books.
+- Downloadable résumé, contact links and responsive layouts.
+- Light / dark theme control and mobile navigation.
 
-## 📝 Overview
+## Technology
 
-This is an interactive, modern online CV & portfolio built with **React 18**, **Vite**, and **Tailwind CSS v4**. It highlights my AI/ML focus, cloud-native architecture, and 12+ years of full-stack experience. Deployed automatically to GitHub Pages.
+- React 18
+- Vite 5
+- Tailwind CSS 3
+- Lucide React icons
+- Custom responsive CSS
+- GitHub Pages with GitHub Actions
 
----
+## Run locally
 
+Requirements: Node.js 20 or a compatible current LTS release, and npm.
 
-## ✨ Features
+    git clone https://github.com/Saurabh11Sharma/saurabh11sharma.github.io.git
+    cd saurabh11sharma.github.io
+    npm ci
+    npm run dev
 
-- ⚡ Vite + React 18 (fast HMR, tiny bundles)
-- 🎨 Tailwind CSS v4 (no config needed)
-- 🌙 Dark/Light mode toggle
-- 🎬 Framer Motion micro-animations
-- 📊 GitHub stats & streak cards
-- 📥 Downloadable Resume (`public/resume.pdf`)
-- 📱 Fully responsive, print-friendly
-- 🤖 AI/ML-centric skills, projects, and summary
+Vite prints the local development URL in the terminal.
 
----
+## Build and preview
 
-## 📂 Project Structure
+    npm run build
+    npm run preview
 
-```text
-saurabh11sharma.github.io/
-├── public/
-│   ├── resume.pdf
-│   └── screenshot.png
-├── src/
-│   ├── App.jsx         # Main interactive CV component
-│   ├── main.jsx        # React entrypoint
-│   └── index.css       # Tailwind v4 entry (single @import)
-├── .github/
-│   └── workflows/
-│       └── pages.yml   # GitHub Pages deploy workflow
-├── index.html
-├── package.json
-└── vite.config.js
-```
+The production output is generated in the dist directory.
 
----
+## Deployment
 
-## 🚀 Usage
+The GitHub Actions workflow in .github/workflows/pages.yml builds the site on pushes to main and deploys the generated dist directory to GitHub Pages. GitHub Pages must be configured to use GitHub Actions as its build and deployment source.
 
-### 1. Quick Start
+## Project structure
 
-```bash
-git clone https://github.com/Saurabh11Sharma/saurabh11sharma.github.io
-cd saurabh11sharma.github.io
-npm install
-npm run dev
-# Open: http://localhost:5173
-```
+    public/
+      favicon.svg
+      Saurabh_Sharma.pdf
+    src/
+      App.jsx
+      index.css
+      main.jsx
+    .github/workflows/
+      pages.yml
+    index.html
+    package.json
+    vite.config.js
 
-### 2. Build & Preview
+## Updating portfolio content
 
-```bash
-npm run build
-npm run preview
-```
+Most content is defined near the top of src/App.jsx:
 
-### 3. Deploy
+- PROFILE — name, role, contact links and résumé path.
+- expertise — capability cards.
+- projects — public repository cards.
+- experience — professional career timeline.
+- books — featured reading list.
 
-Any push to `main` triggers GitHub Actions to build and deploy to Pages.
-Check your site at: https://saurabh11sharma.github.io
+Keep claims verifiable and link project cards to the exact repository. Client work should be described as professional experience or a case study; do not publish proprietary source code or confidential data.
 
----
+## Résumé asset
 
-## 🧩 Tailwind v4 Setup (Important)
+The site currently serves public/Saurabh_Sharma.pdf at /Saurabh_Sharma.pdf. Keep this file aligned with the latest approved résumé before sharing the portfolio with recruiters.
 
-- **No config files required.**
-- Make sure these files do **not** exist:
-  - `postcss.config.js` / `postcss.config.cjs`
-  - `tailwind.config.js`
-- Install Tailwind v4 only:
+## License
 
-```bash
-npm uninstall postcss autoprefixer @tailwindcss/postcss
-npm install tailwindcss@latest
-```
-
-Single import in CSS (`src/index.css`):
-
-```css
-@import "tailwindcss";
-```
-
-Ensure it’s imported in `src/main.jsx`:
-
-```js
-import "./index.css";
-```
-
-If you still see a PostCSS error, you probably have a leftover `postcss.config.*`. Delete it and restart the dev server.
-
----
-
-## 🧪 Sanity Check
-
-Replace `src/App.jsx` temporarily with:
-
-```jsx
-export default function App() {
-  return (
-    <div className="p-10 text-4xl font-bold text-blue-600 bg-gray-100">
-      Tailwind v4 works 🎉
-    </div>
-  );
-}
-```
-
-If the text is big & blue on gray, Tailwind is working.
-
----
-
-## �️ Customization
-
-- Edit the `DATA` object inside `src/App.jsx` for:
-  - name, role, summary (keep AI/ML emphasis)
-  - highlights, skills, toolstack
-  - experiences, projects (link to real repos)
-  - email, phone, linkedin, github
-- Replace `public/resume.pdf` with your own resume.
-- Replace `public/screenshot.png` with your own screenshot.
-
----
-
-## 🐞 Troubleshooting
-
-**PostCSS error:**
-
-> “Trying to use tailwindcss directly as a PostCSS plugin”
-
-➜ You have a `postcss.config.*` file. Delete it and reinstall `tailwindcss@latest`.
-
-**No styles (plain text):**
-
-- `src/index.css` must be exactly `@import "tailwindcss";`
-- `src/main.jsx` must import `"./index.css"`
-- Run:
-
-```bash
-rm -rf node_modules package-lock.json dist .vite && npm install && npm run dev
-```
-
-**GitHub Actions fail on autoprefixer:**
-
-➜ You’re mixing v3 configs. Remove PostCSS and Tailwind configs; ensure `package.json` devDeps do not include postcss/autoprefixer.
-
----
-
-## 📬 Contact
-
-- 📧 Email: Saurabh11sharma@live.com
-- 💼 LinkedIn: [linkedin.com/in/saurabh11sharma](https://linkedin.com/in/saurabh11sharma)
-- 🐙 GitHub: [github.com/Saurabh11Sharma](https://github.com/Saurabh11Sharma)
-
----
-
-## ⭐ License
-
-MIT — feel free to fork and adapt for your own online CV.
+The repository currently declares MIT in package metadata. Review the LICENSE file in the repository for the precise terms.
